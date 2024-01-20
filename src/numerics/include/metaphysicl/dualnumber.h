@@ -101,7 +101,7 @@ DualNumber<T,D,asd>::operator=(const DualNumber<T,D,asd> & dn)
   _val = dn.value();
 
   if (!allow_skipping_derivatives || do_derivatives)
-    _deriv = dn.derivatives();
+    _deriv = dn.derivatives(); //
 
   return *this;
 }
@@ -141,7 +141,7 @@ DualNumber<T,D,asd>::DualNumber(const DualNumber<T,D,asd> & dn) :
     _val(dn.value())
 {
   if (!allow_skipping_derivatives || do_derivatives)
-    _deriv = dn.derivatives();
+    _deriv = dn.derivatives(); //
 }
 
 #ifdef METAPHYSICL_USE_STD_MOVE
@@ -150,7 +150,7 @@ inline
 DualNumber<T,D,asd>::DualNumber(DualNumber<T,D,asd> && dn) :
     _val(std::move(dn.value()))
 {
-  if (!allow_skipping_derivatives || do_derivatives)
+  // if (!allow_skipping_derivatives || do_derivatives)
     _deriv = std::move(dn.derivatives());
 }
 #endif // METAPHYSICL_USE_STD_MOVE
@@ -220,7 +220,7 @@ inline
 DualNumber<T,D,asd>::DualNumber(const T2& val, typename std::enable_if<std::is_convertible<T2,T>::value, void*>::type) :
     _val  (DualNumberConstructor<T,D,asd>::value(val))
 {
-  if (!allow_skipping_derivatives || do_derivatives)
+  // if (!allow_skipping_derivatives || do_derivatives)
     _deriv = DualNumberConstructor<T,D,asd>::deriv(val);
 }
 
