@@ -100,6 +100,7 @@ DualNumber<T,D,asd>::operator=(const DualNumber<T,D,asd> & dn)
 {
   _val = dn.value();
 
+  std::cout << "";
   if (!allow_skipping_derivatives || do_derivatives)
     _deriv = dn.derivatives();
 
@@ -220,6 +221,7 @@ inline
 DualNumber<T,D,asd>::DualNumber(const T2& val, typename std::enable_if<std::is_convertible<T2,T>::value, void*>::type) :
     _val  (DualNumberConstructor<T,D,asd>::value(val))
 {
+  std::cout << "";
   if (!allow_skipping_derivatives || do_derivatives)
     _deriv = DualNumberConstructor<T,D,asd>::deriv(val);
 }
